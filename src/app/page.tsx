@@ -5,8 +5,7 @@ export default function Home() {
     <>
       <h1>Home Page</h1>
       <hr />
-      <p>Hello welcome have room have cd have wifi</p>
-      <AppWelcome/>
+      <AppWelcome headTitle="Hi" isShow={true} />
     </>
   );
 }
