@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Kanit } from "next/font/google";
 import "./globals.css";
-import AppNavbars from "@/app/components/AppNavbars";
 import Navbar01Page from "@/components/navbar-01/navbar-01";
 
 const kanit = Kanit({
