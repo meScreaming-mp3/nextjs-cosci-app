@@ -6,9 +6,6 @@ export default async function About() {
     return (
         <>
             <Contact01Page version={apiInfo.data.version} />
-            {
-                apiInfo && <p>{apiInfo.data.version}</p>
-            }
         </>
     );
 }
