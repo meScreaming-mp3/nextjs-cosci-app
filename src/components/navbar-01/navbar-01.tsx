@@ -3,6 +3,7 @@ import { Logo } from "./logo";
 import { NavMenu } from "./nav-menu";
 import { NavigationSheet } from "./navigation-sheet";
 import Link from "next/link";
+import {Badge, ShoppingBasket } from "lucide-react";
 
 const Navbar01Page = () => {
   return (
@@ -15,6 +16,9 @@ const Navbar01Page = () => {
           <NavMenu className="hidden md:block" />
 
           <div className="flex items-center gap-3">
+
+          <Badge className="p-2 text-sm"><ShoppingBasket /> 0 item (s)</Badge>
+
             <Button asChild variant="outline" className="hidden sm:inline-flex">
               <Link href="/login">สมัครสมาชิกก</Link>
             </Button>
