@@ -53,8 +53,8 @@ export default function CartList() {
         </TableBody>
       </Table>
         
-        <div className="">
-            <div>
+        <div className="text-right mt-5">
+            <div className="font-bold text-2xl">
                 รวมทั้งหมด: {totalPrice}
             </div>
             <div className="m-4">
