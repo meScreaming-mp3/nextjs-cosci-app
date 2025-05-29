@@ -3,7 +3,8 @@ import { Logo } from "./logo";
 import { NavMenu } from "./nav-menu";
 import { NavigationSheet } from "./navigation-sheet";
 import Link from "next/link";
-import {Badge, ShoppingBasket } from "lucide-react";
+import { ShoppingBasket } from "lucide-react";
+import { Badge } from "../ui/badge";
 
 const Navbar01Page = () => {
   return (
