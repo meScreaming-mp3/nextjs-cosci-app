@@ -27,7 +27,7 @@ export const NavMenu = (props: NavigationMenuProps) => (
       </NavigationMenuItem>
       <NavigationMenuItem>
         <NavigationMenuLink asChild>
-          <Link href="page">เรียนไรดี?</Link>
+          <Link href="course">เรียนไรดี?</Link>
         </NavigationMenuLink>
       </NavigationMenuItem>
     </NavigationMenuList>
