@@ -1,6 +1,5 @@
 "use client";
 
-//import { Logo } from "@/components/logo";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -16,6 +15,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { authClient } from "@/lib/auth-client"; //import the auth client
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -23,6 +24,7 @@ const formSchema = z.object({
 });
 
 const Signup01Page = () => {
+  const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     defaultValues: {
       email: "",
@@ -31,8 +33,27 @@ const Signup01Page = () => {
     resolver: zodResolver(formSchema),
   });
 
-  const onSubmit = (data: z.infer<typeof formSchema>) => {
-    console.log(data);
+  const onSubmit = async (form: z.infer<typeof formSchema>) => {
+
+    await authClient.signUp.email({
+        name: "Your Name",
+        email: form.email, // user email address
+        password: form.password, // user password -> min 8 characters by default
+    }, {
+        onRequest: (ctx) => {
+            //show loading
+            console.log(ctx.body)
+        },
+        onSuccess: (ctx) => {
+            //redirect to the dashboard or sign in page
+            console.log(ctx.data);
+            router.replace("/login");
+        },
+        onError: (ctx) => {
+            // display the error message
+            alert(ctx.error.message);
+        },
+});
   };
 
   return (
