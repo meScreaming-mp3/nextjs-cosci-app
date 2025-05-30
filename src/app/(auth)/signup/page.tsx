@@ -19,6 +19,7 @@ import { authClient } from "@/lib/auth-client"; //import the auth client
 import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
+  name: z.string().min(1, "Atleast 1 character"),
   email: z.string().email(),
   password: z.string().min(6, "Password must be at least 6 characters long"),
 });
@@ -27,6 +28,7 @@ const Signup01Page = () => {
   const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     defaultValues: {
+      name:"",
       email: "",
       password: "",
     },
@@ -36,7 +38,7 @@ const Signup01Page = () => {
   const onSubmit = async (form: z.infer<typeof formSchema>) => {
 
     await authClient.signUp.email({
-        name: "Your Name",
+        name: form.name,
         email: form.email, // user email address
         password: form.password, // user password -> min 8 characters by default
     }, {
@@ -77,6 +79,24 @@ const Signup01Page = () => {
           >
             <FormField
               control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Name</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="name"
+                      placeholder="Name"
+                      className="w-full"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
               name="email"
               render={({ field }) => (
                 <FormItem>
@@ -112,7 +132,7 @@ const Signup01Page = () => {
               )}
             />
             <Button type="submit" className="mt-4 w-full">
-              Continue with Email
+              Signup!
             </Button>
           </form>
         </Form>
