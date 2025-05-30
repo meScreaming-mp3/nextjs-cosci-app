@@ -8,9 +8,9 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-import { product } from "@/app/db/schema";
+import { product } from "@/db/schema";
 import { desc } from "drizzle-orm";
-import db from "@/app/db/inddex";
+import db from "@/db/inddex";
 import CartButton from "../components/CartButton";
 
 const Product = async () => {
